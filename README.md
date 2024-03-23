@@ -1,8 +1,8 @@
-###  DATE: 
+###  DATE: 23-03-2024
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
+###  NAME: KOUSALYA A.
+###  ROLL NO : 212222230068
+###  DEPARTMENT: ARTIFICIAL INTELLIGENCE AND DATA SCIENCE
 
 
 # EXPERIMENT NO 05 INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
@@ -45,21 +45,17 @@ An external controller (such as the Arduino) tells the servo where to go with a 
 
 ### Figure-03 SERVO MOTOR OVERVIEW 
 
- 
-
-
- 
-
-
-
-
-
 CIRCUIT DIAGRAM
  
  
  ![image](https://user-images.githubusercontent.com/36288975/163544618-6eb8a7b5-7f1a-428a-8d9f-fd899b145efb.png)
 
 ### FIGURE 04 CIRCUIT DIAGRAM
+![image](https://github.com/Kousalya22008930/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/119389108/7617b77a-20db-468c-97c0-250f5ca048be)
+### FIGURE 05 SCHEMATIC DIAGRAM
+![image](https://github.com/Kousalya22008930/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/119389108/7a42e1ac-be8f-4d1c-8627-75e6f37dc0d5)
+### FIGURE 06 GRAPH
+![image](https://github.com/Kousalya22008930/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/119389108/b450f069-8127-4430-a8cd-1c866ac8d97d)
 
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
@@ -74,12 +70,52 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
- 
+ ```
+#include<Servo.h>
+Servo sr1;
+int pos=0;
+int red=9;
+int green=8;
+void setup()
+{
+  sr1.attach(6);
+  Serial.begin(9600);
+  pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+}
 
-
-
-
-
+void loop()
+{
+  for(pos=0;pos<=180;pos+=5)
+  {
+    sr1.write(pos);
+    delay(1000);
+    Serial.println(pos);
+    if(pos>=120)
+  {
+    digitalWrite(red,HIGH);
+    delay(200);
+    digitalWrite(red,LOW);
+    delay(200);
+  }
+    
+  }
+  for(pos=180;pos>=0;pos-=5)
+  {
+    sr1.write(pos);
+    delay(1000);
+    Serial.println(pos);
+    if(pos<=120)
+  {
+    digitalWrite(green,HIGH);
+    delay(200);
+    digitalWrite(green,LOW);
+    delay(200);
+  }
+  }
+   
+} 
+```
 
 
 
